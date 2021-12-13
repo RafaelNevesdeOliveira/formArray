@@ -1,0 +1,33 @@
+<h3>Add Curso teste</h3>
+<div class="container-fluid" [formGroup]="form">
+  <ng-container formArrayName="lessons">
+    <ng-container *ngFor="let lessonForm of lessons.controls; let i = index">
+      <div style="display: flex" class="row g-3" [formGroup]="lessonForm">
+        <div class="col-sm-5" appearance="fill">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="title"
+            placeholder="Digite o curso"
+          />
+        </div>
+        <div class="col-sm-3">
+          <select style="width: 100%; height: 70%" class="form-select" formControlName="level" placeholder="Lesson level">
+            <option disabled value="">Selecione o curso</option>
+            <option value="beginner">Inicio</option>
+            <option value="intermediate">Intermediario</option>
+            <option value="advanced">Avançado</option>
+          </select>
+        </div>
+
+        <div class="col-sm-4 my-3">
+          <button class="btn btn-danger" (click)="deleteLesson(i)">
+            Deletar
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <button (click)="addLesson()" class="btn btn-primary">Adicionar</button>
+</div>
